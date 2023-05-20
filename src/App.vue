@@ -1,5 +1,5 @@
 <script setup>
-import VxTest from "./Elements/vx-test.vue";
+import VxTest from "./Components/vx-test.vue";
 </script>
 
 <template>

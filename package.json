@@ -1,6 +1,6 @@
 {
   "name": "vx-suite",
-  "private": true,
+  "private": false,
   "version": "0.0.1",
   "type": "module",
   "description": "VxSuite of components for Vue3",
@@ -11,17 +11,20 @@
   },
   "author": "Val Vankov",
   "license": "ISC",
-    "files": ["dist"],
-    "main": "./dist/my-lib.umd.cjs",
-    "module": "./dist/my-lib.js",
-    "exports": {
-        ".": {
-            "import": "./dist/my-lib.js",
-            "require": "./dist/my-lib.umd.cjs"
-        }
-    },
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/my-lib.cjs.js",
+  "module": "./dist/my-lib.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/my-lib.js",
+      "require": "./dist/my-lib.umd.cjs"
+    }
+  },
   "dependencies": {
-    "vue": "^3.2.47"
+    "vue": "^3.2.47",
+    "vue3-popper": "^1.5.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.1.0",
