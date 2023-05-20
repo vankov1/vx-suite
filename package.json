@@ -11,6 +11,15 @@
   },
   "author": "Val Vankov",
   "license": "ISC",
+    "files": ["dist"],
+    "main": "./dist/my-lib.umd.cjs",
+    "module": "./dist/my-lib.js",
+    "exports": {
+        ".": {
+            "import": "./dist/my-lib.js",
+            "require": "./dist/my-lib.umd.cjs"
+        }
+    },
   "dependencies": {
     "vue": "^3.2.47"
   },

@@ -1,8 +1,9 @@
 <script setup>
+import VxTest from "./Elements/vx-test.vue";
 </script>
 
 <template>
-  xxx
+  c<vx-test />c
 </template>
 
 <style scoped>
