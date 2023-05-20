@@ -1,6 +1,6 @@
 {
   "name": "vx-suite",
-  "private": false,
+  "private": true,
   "version": "0.0.1",
   "type": "module",
   "description": "VxSuite of components for Vue3",
@@ -14,12 +14,12 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/my-lib.cjs.js",
-  "module": "./dist/my-lib.es.js",
+  "main": "./dist/vx-suite.cjs.js",
+  "module": "./dist/vx-suite.es.js",
   "exports": {
     ".": {
-      "import": "./dist/my-lib.js",
-      "require": "./dist/my-lib.umd.cjs"
+      "import": "./dist/vx-suite.es.js",
+      "require": "./dist/vx-suite.cjs.js"
     }
   },
   "dependencies": {
@@ -31,6 +31,8 @@
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.23",
     "tailwindcss": "^3.3.2",
-    "vite": "^4.3.2"
+    "vite": "^4.3.2",
+    "vue-docgen-cli": "^4.67.0",
+    "vue-docgen-web-types": "^0.1.8"
   }
 }
