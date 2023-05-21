@@ -2,9 +2,12 @@
   <div class="bg-gray-200 py-2">
     <div class="container w-full mx-auto">
       <nav class="bg-gray-200 py-1">
-          <span class="text-monospace text-sm font-bold" v-if="itemName">
-            {{ itemName }} »
-          </span>
+        <span
+          class="text-monospace text-sm font-bold"
+          v-if="itemName"
+        >
+          {{ itemName }} »
+        </span>
 
         <vx-button
           class="!text-gray-800 hover:!bg-gray-700 hover:!text-white px-3 py-2 rounded-md text-sm font-medium bg-transparent mx-2"
@@ -18,11 +21,11 @@
   </div>
 </template>
 <script>
-import VxButton from "./vx-button.vue";
+import VxButton from '../button/vx-button.vue'
 
 export default {
   name: 'vx-submenu',
-  components: {VxButton},
+  components: { VxButton },
   mixins: [],
   props: {
     itemName: {
@@ -35,15 +38,11 @@ export default {
     },
   },
   data() {
-    return {
-
-    }
+    return {}
   },
   computed: {},
   watch: {},
-  created() {
-
-  },
+  created() {},
   methods: {},
 }
 </script>

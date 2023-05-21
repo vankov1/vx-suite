@@ -1,48 +1,62 @@
 <template>
   <div class="mt-2">
-    <label for="email" class="block text-sm font-medium text-gray-700" v-if="label">{{ label }}</label>
+    <label
+      for="email"
+      class="block text-sm font-medium text-gray-700"
+      v-if="label"
+    >
+      {{ label }}
+    </label>
     <select
       :disabled="disabled"
       :ref="id"
       @change="update"
-      class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm disabled:cursor-not-allowed disabled:border-gray-200 disabled:bg-gray-50 disabled:text-gray-500">
+      class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm disabled:cursor-not-allowed disabled:border-gray-200 disabled:bg-gray-50 disabled:text-gray-500"
+    >
       <option
         v-for="timezone in phpTimezones"
         :value="timezone"
         :key="timezone"
         :selected="timezone === modelValue"
-      >{{ timezone }}</option>
+      >
+        {{ timezone }}
+      </option>
     </select>
-    <p v-if="bottomHint" class="mt-2 text-sm text-gray-500" v-html="bottomHint"></p>
+    <p
+      v-if="bottomHint"
+      class="mt-2 text-sm text-gray-500"
+      v-html="bottomHint"
+    ></p>
   </div>
 </template>
 
 <script>
-import VxHelpIcon from "./icons/vx-help-icon-with-tooltip.vue";
+import VxIconWithTooltip from '../icon-with-tooltip/vx-icon-with-tooltip.vue'
 
 export default {
-  name: "vx-timezone-selector",
-  components: {VxHelpIcon},
+  name: 'vx-timezone-selector',
+  components: { VxIconWithTooltip },
   props: {
     id: {
       type: String,
-      default: () => 'vx-timezone-selector-' + Math.random().toString(36).substr(2, 9)
+      default: () =>
+        'vx-timezone-selector-' + Math.random().toString(36).substr(2, 9),
     },
     modelValue: {
       type: String,
-      default: null
+      default: null,
     },
     label: {
       type: String,
-      default: ''
+      default: '',
     },
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     bottomHint: {
       type: String,
-      default: ''
+      default: '',
     },
   },
   emits: ['update:modelValue'],
@@ -482,9 +496,8 @@ export default {
     update() {
       this.$emit('update:modelValue', this.$refs[this.id].value)
     },
-  }
+  },
 }
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
