@@ -9,10 +9,8 @@
 
 <script>
 export default {
-  name: "vx-container"
+  name: 'vx-container',
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

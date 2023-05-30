@@ -1,7 +1,7 @@
 <template>
-  <div class="bg-gray-200 py-2">
-    <div class="container w-full mx-auto">
-      <nav class="bg-gray-200 py-1">
+  <div class="bg-white py-2 dark:bg-gray-800 shadow dark:text-gray-100">
+    <div class="container w-full max-w-[1212px] mx-auto">
+      <nav class="py-1">
         <span
           class="text-monospace text-sm font-bold"
           v-if="itemName"

@@ -36,7 +36,8 @@
             leave-to="opacity-0 scale-95"
           >
             <DialogPanel
-              class="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all"
+              class="w-full transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all"
+              :class="width"
             >
               <DialogTitle
                 v-if="$slots.title"
@@ -106,10 +107,13 @@ export default {
       type: Boolean,
       default: false,
     },
+    width: {
+      type: String,
+      default: 'max-w-md',
+    },
   },
   watch: {
     open: function (value) {
-      console.log('open', value)
       this.setIsOpen(value)
     },
   },
