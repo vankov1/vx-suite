@@ -11,6 +11,12 @@
     >
       {{ label }}
     </ListboxLabel>
+    <ListboxLabel
+      class="text-sm text-gray-500 dark:text-gray-400"
+      v-if="description"
+    >
+      {{ description }}
+    </ListboxLabel>
     <div class="relative mt-1">
       <ListboxButton
         class="min-h-[38px] relative w-full cursor-default rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 dark:focus:ring-gray-500 dark:focus:border-gray-700"
@@ -38,8 +44,8 @@
         >
           <ListboxOption
             as="template"
-            v-for="item in items"
-            :key="item"
+            v-for="(item, index) in items"
+            :key="index"
             :value="item"
             v-slot="{ active, selected }"
           >
@@ -104,6 +110,10 @@ export default {
       type: String,
       default: null,
     },
+    description: {
+      type: String,
+      default: null,
+    },
     defaultValue: {
       type: Object,
       default: null,
@@ -153,8 +163,9 @@ export default {
       this.$emit('change', this.selected)
     },
     compareItemsBy(a, b) {
+      // In this case a and b are objects and we can not do toLowerCase()
       if (typeof this.items === 'object') {
-        return a.toLowerCase() === b.toLowerCase()
+        // return a.toLowerCase() === b.toLowerCase()
       }
 
       return a[this.itemValue] === b[this.itemValue]
