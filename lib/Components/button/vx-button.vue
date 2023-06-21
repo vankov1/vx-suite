@@ -54,7 +54,7 @@
   <!--  <div class="border border-pink-600 text-pink-600 bg-white hover:bg-pink-50"></div>-->
   <!--  <div class="border border-red-600 text-red-600 bg-white hover:bg-red-50"></div>-->
   <!--  <div class="border border-purple-600 text-purple-600 bg-white hover:bg-purple-50"></div>-->
-  <!--  <div class="text-gray-600 hover:text-gray-700 focus:ring-gray-500 bg-none hover:bg-none focus:ring-offset-none"></div>-->
+  <!--  <div class="text-gray-600 hover:text-gray-700 focus:ring-gray-500 bg-none hover:bg-none focus:ring-offset-none dark:text-gray-100"></div>-->
 </template>
 
 <script>
@@ -145,6 +145,9 @@ export default {
       if (!this.outlined) {
         classes += ' text-white'
       }
+
+      classes +=
+        ' dark:!text-gray-200 dark:hover:text-gray-100 dark:focus:ring-gray-500 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-offset-gray-900 dark:focus:ring-offset-2'
 
       return `${classes} self-center inline-flex justify-center rounded-md border border-transparent text-sm font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 ${
         colorClasses[this.color]

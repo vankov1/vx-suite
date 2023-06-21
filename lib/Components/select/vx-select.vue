@@ -1,9 +1,7 @@
 <template>
   <Listbox
     as="div"
-    :modelValue="modelValue"
-    @update:modelValue="updateValue"
-    :by="compareItemsBy"
+    v-model="internalValue"
   >
     <ListboxLabel
       class="block text-sm font-medium text-gray-700 dark:text-gray-300"
@@ -21,8 +19,45 @@
       <ListboxButton
         class="min-h-[38px] relative w-full cursor-default rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 dark:focus:ring-gray-500 dark:focus:border-gray-700"
       >
-        <span class="block truncate">
-          {{ selected ? selected[itemTitle] ?? selected : '' }}
+        <span
+          class="block truncate"
+          v-if="internalValueIsSet"
+        >
+          <template v-if="chips">
+            <template v-if="multiple">
+              <vx-badge
+                :color="chipsColor"
+                v-for="(item, index) in internalValue"
+                class="mr-1 pr-1"
+              >
+                {{ item ? item[itemTitle] ?? item : '' }}
+                <XCircleIcon
+                  @click.stop="removeItem(index)"
+                  class="h-4 w-4 ml-1 cursor-pointer"
+                ></XCircleIcon>
+              </vx-badge>
+            </template>
+            <template v-else>
+              <vx-badge :color="chipsColor">{{
+                internalValue ? internalValue[itemTitle] ?? internalValue : ''
+              }}</vx-badge>
+            </template>
+          </template>
+          <template v-else>
+            <slot
+              name="selected"
+              :value="internalValue"
+              >{{
+                internalValue ? internalValue[itemTitle] ?? internalValue : ''
+              }}</slot
+            >
+          </template>
+        </span>
+        <span
+          v-else
+          class="block truncate text-gray-400 dark:text-gray-500"
+        >
+          {{ placeholder }}
         </span>
         <span
           class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2"
@@ -92,8 +127,12 @@ import {
   ListboxOption,
   ListboxOptions,
 } from '@headlessui/vue'
-import { CheckIcon, ChevronUpDownIcon } from '@heroicons/vue/20/solid'
-
+import {
+  CheckIcon,
+  ChevronUpDownIcon,
+  XCircleIcon,
+} from '@heroicons/vue/20/solid'
+import VxBadge from '../badge'
 export default {
   name: 'vx-select',
   components: {
@@ -104,6 +143,8 @@ export default {
     ListboxOptions,
     CheckIcon,
     ChevronUpDownIcon,
+    XCircleIcon,
+    VxBadge,
   },
   props: {
     label: {
@@ -114,10 +155,6 @@ export default {
       type: String,
       default: null,
     },
-    defaultValue: {
-      type: Object,
-      default: null,
-    },
     items: {
       type: [Array, Object],
       default: () => [],
@@ -125,10 +162,6 @@ export default {
     itemTitle: {
       type: String,
       default: 'title',
-    },
-    itemValue: {
-      type: String,
-      default: 'value',
     },
     itemSubtitle: {
       type: String,
@@ -138,38 +171,63 @@ export default {
       type: [String, Number, Object],
       default: null,
     },
-    returnObject: {
+    chips: {
       type: Boolean,
       default: false,
     },
+    chipsColor: {
+      type: String,
+      default: 'primary',
+    },
+    placeholder: {
+      type: String,
+      default: 'Select an option',
+    },
   },
-  data() {
-    return {
-      selected: this.modelValue,
-    }
+  computed: {
+    multiple() {
+      return this.$attrs.hasOwnProperty('multiple')
+    },
+    internalValue: {
+      get() {
+        if (this.multiple && this.modelValue === null) {
+          return []
+        }
+
+        return this.modelValue
+      },
+      set(value) {
+        this.$emit('update:modelValue', value)
+      },
+    },
+    internalValueIsSet() {
+      console.log(typeof this.internalValue)
+      return (
+        this.internalValue !== null &&
+        this.internalValue !== undefined &&
+        this.internalValue !== '' &&
+        (typeof this.internalValue === 'object'
+          ? Object.keys(this.internalValue).length > 0
+          : true)
+      )
+    },
   },
   methods: {
-    updateValue(value) {
-      // This is not working as expected, refactor at some point so it works like vuetify
-      if (this.returnObject) {
-        this.selected = this.items.find(
-          (item) => item[this.itemValue] === value
-        )
-      } else {
-        this.selected = value
-      }
-
-      this.$emit('update:modelValue', this.selected)
-      this.$emit('change', this.selected)
-    },
-    compareItemsBy(a, b) {
-      // In this case a and b are objects and we can not do toLowerCase()
-      if (typeof this.items === 'object') {
-        // return a.toLowerCase() === b.toLowerCase()
-      }
-
-      return a[this.itemValue] === b[this.itemValue]
+    removeItem(index) {
+      this.internalValue.splice(index, 1)
     },
   },
+  // data() {
+  //   return {
+  //     selected: null,
+  //   }
+  // },
+  // methods: {
+  //   updateValue(value) {
+  //     this.selected = value
+  //     this.$emit('update:modelValue', this.selected)
+  //     this.$emit('change', this.selected)
+  //   },
+  // },
 }
 </script>

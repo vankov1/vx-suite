@@ -164,6 +164,13 @@
           />
         </svg>
       </template>
+      <template v-else-if="name === 'map-pin'">
+        <map-pin-icon
+          v-bind="$attrs"
+          :width="iconSize"
+          :height="iconSize"
+        />
+      </template>
     </slot>
   </div>
 </template>
@@ -171,6 +178,7 @@
 <script>
 import { GlobeEuropeAfricaIcon } from '@heroicons/vue/20/solid'
 import { CodeBracketSquareIcon } from '@heroicons/vue/20/solid'
+import { MapPinIcon } from '@heroicons/vue/20/solid/index.js'
 export default {
   name: 'vx-icon',
   props: {
@@ -188,6 +196,7 @@ export default {
     },
   },
   components: {
+    MapPinIcon,
     GlobeEuropeAfricaIcon,
     CodeBracketSquareIcon,
   },
