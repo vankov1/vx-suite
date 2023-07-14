@@ -39,10 +39,11 @@
 
 <script>
 import {
-  InformationCircleIcon,
-  ExclamationCircleIcon,
   CheckCircleIcon,
+  ExclamationCircleIcon,
+  InformationCircleIcon,
 } from '@heroicons/vue/20/solid'
+
 export default {
   name: 'vx-alert',
   components: { InformationCircleIcon, ExclamationCircleIcon, CheckCircleIcon },
