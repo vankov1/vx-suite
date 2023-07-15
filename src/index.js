@@ -1,5 +1,5 @@
 import VxAlert from './components/alert/vx-alert.vue'
-import VxAutoComplete from './components/autocomplete/vx-autocomplete.vue'
+import VxAutocomplete from './components/autocomplete/vx-autocomplete.vue'
 import VxBadge from './components/badge/vx-badge.vue'
 // import VxBreadcrumbs from './components/breadcrumbs/vx-breadcrumbs.vue'
 import VxButton from './components/button/vx-button.vue'
@@ -36,7 +36,7 @@ import VxTwoColumnContainer from './components/two-column-container/vx-two-colum
 
 export {
   VxAlert,
-  VxAutoComplete,
+  VxAutocomplete,
   VxBadge,
   // VxBreadcrumbs,
   VxButton,
