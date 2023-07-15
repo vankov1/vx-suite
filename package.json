@@ -1,6 +1,6 @@
 {
   "name": "vx-suite",
-  "private": false,
+  "private": true,
   "version": "0.3.3",
   "type": "module",
   "description": "VxSuite of components for Vue3",
