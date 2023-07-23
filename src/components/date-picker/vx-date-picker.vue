@@ -6,6 +6,7 @@
     :enable-time-picker="enableTimePicker"
     :inline="inline"
     :auto-apply="true"
+    :year-range="yearRange"
   >
     <template #day="{ day, date }">
       <slot
@@ -53,6 +54,12 @@ export default {
     inline: {
       type: Boolean,
       default: false,
+    },
+    yearRange: {
+      type: Array,
+      default: () => {
+        return [new Date().getFullYear(), new Date().getFullYear() + 1]
+      },
     },
   },
   data() {
