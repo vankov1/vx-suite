@@ -47,10 +47,20 @@
             <slot
               name="selected"
               :value="internalValue"
-              >{{
-                internalValue ? internalValue[itemTitle] ?? internalValue : ''
-              }}</slot
             >
+              <template v-if="returnValueKey">
+                {{
+                  selectedObject
+                    ? selectedObject[itemTitle] ?? selectedObject
+                    : ''
+                }}
+              </template>
+              <template v-else>
+                {{
+                  internalValue ? internalValue[itemTitle] ?? internalValue : ''
+                }}
+              </template>
+            </slot>
           </template>
         </span>
         <span
@@ -183,6 +193,10 @@ export default {
       type: String,
       default: 'Select an option',
     },
+    returnValueKey: {
+      type: String,
+      default: null,
+    },
   },
   computed: {
     multiple() {
@@ -197,11 +211,30 @@ export default {
         return this.modelValue
       },
       set(value) {
+        if (this.returnValueKey) {
+          value = value[this.returnValueKey]
+        }
+
         this.$emit('update:modelValue', value)
       },
     },
+    selectedObject() {
+      if (this.internalValue === null) {
+        return null
+      }
+
+      if (this.multiple) {
+        return this.internalValue.map((item) => {
+          return this.items.find((i) => i[this.itemTitle] === item)
+        })
+      }
+
+      return this.items.find(
+        (item) => item[this.returnValueKey] === this.internalValue
+      )
+    },
     internalValueIsSet() {
-      console.log(typeof this.internalValue)
+      // console.log(typeof this.internalValue)
       return (
         this.internalValue !== null &&
         this.internalValue !== undefined &&

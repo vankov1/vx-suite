@@ -40,8 +40,14 @@ import { VxTextarea } from './textarea'
 import { VxTimePicker } from './time-picker'
 import { VxTimezoneSelector } from './timezone-selector'
 import { VxTooltip } from './tooltip'
+import { VxPriceField } from './price-field/index.js'
+
+import { VxAccordion } from './accordion/index.js'
+import { VxAccordionItem } from './accordion-item/index.js'
 
 export {
+  VxAccordion,
+  VxAccordionItem,
   VxAlert,
   VxAutocomplete,
   VxBadge,
@@ -77,4 +83,5 @@ export {
   VxTimezoneSelector,
   VxTooltip,
   // VxTwoColumnContainer,
+  VxPriceField,
 }

@@ -3,7 +3,7 @@
     <template v-if="pre">
       <label
         :for="id"
-        class="block text-sm font-medium text-gray-700 dark:text-gray-100"
+        class="block text-sm font-medium text-gray-700 dark:text-gray-100 h-5"
         v-if="label"
       >
         {{ label }}
@@ -22,6 +22,7 @@
           @change="updateValue"
           @keyup="keyUp"
           class="border-solid border-l-0 block w-full flex-1 rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm dark:bg-gray-900 dark:text-gray-100 dark:border-gray-700"
+          :class="inputClass"
           :placeholder="placeholder"
         />
       </div>
@@ -38,7 +39,7 @@
     <template v-else>
       <label
         :for="id"
-        class="block text-sm font-medium text-gray-700 dark:text-gray-100"
+        class="block text-sm font-medium text-gray-700 dark:text-gray-100 h-5"
         v-if="label"
       >
         {{ label }}
@@ -49,6 +50,7 @@
           :ref="id"
           type="text"
           class="border-solid mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm dark:bg-gray-900 dark:text-gray-100 dark:border-gray-700"
+          :class="inputClass"
           :name="name"
           :placeholder="placeholder"
           :value="modelValue"
@@ -130,6 +132,10 @@ export default {
       type: Number,
       default: 0,
     },
+    inputClass: {
+      type: String,
+      default: '',
+    },
   },
   emits: ['update:modelValue'],
   methods: {
@@ -141,7 +147,7 @@ export default {
         e.target.value.length >= this.switchToNextFieldLength &&
         this.nextFieldId
       ) {
-        console.log(this.nextFieldId)
+        // console.log(this.nextFieldId)
         this.$nextTick(() => {
           document.getElementById(this.nextFieldId)?.focus()
         })

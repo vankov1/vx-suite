@@ -33,8 +33,13 @@ import VxTimePicker from './components/time-picker/vx-time-picker.vue'
 import VxTimezoneSelector from './components/timezone-selector/vx-timezone-selector.vue'
 import VxTooltip from './components/tooltip/vx-tooltip.vue'
 import VxTwoColumnContainer from './components/two-column-container/vx-two-column-container.vue'
+import { VxPriceField } from './components/index.js'
+import { VxAccordion } from './components/index.js'
+import { VxAccordionItem } from './components/index.js'
 
 export {
+  VxAccordion,
+  VxAccordionItem,
   VxAlert,
   VxAutocomplete,
   VxBadge,
@@ -70,4 +75,5 @@ export {
   VxTimezoneSelector,
   VxTooltip,
   VxTwoColumnContainer,
+  VxPriceField,
 }

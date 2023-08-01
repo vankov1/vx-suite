@@ -2,9 +2,8 @@
   <div class="mt-10 sm:mt-4 shadow sm:rounded-md">
     <div
       :class="[
-        onlyHeader
-          ? 'rounded-b-md'
-          : 'border-b border-gray-200 dark:border-gray-700',
+        onlyHeader ? 'rounded-b-md' : '',
+        noHeaderDivider ? '' : 'border-b border-gray-200 dark:border-gray-700',
       ]"
       class="bg-white px-4 py-5 sm:px-6 rounded-t-md dark:bg-gray-800"
       v-if="$slots.title"
@@ -69,6 +68,10 @@ export default {
       default: false,
     },
     onlyHeader: {
+      type: Boolean,
+      default: false,
+    },
+    noHeaderDivider: {
       type: Boolean,
       default: false,
     },
