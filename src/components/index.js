@@ -44,6 +44,8 @@ import { VxPriceField } from './price-field/index.js'
 
 import { VxAccordion } from './accordion/index.js'
 import { VxAccordionItem } from './accordion-item/index.js'
+import { VxIconMdi } from './icon-mdi/index.js'
+import { VxSwitch } from './switch/index.js'
 
 export {
   VxAccordion,
@@ -84,4 +86,6 @@ export {
   VxTooltip,
   // VxTwoColumnContainer,
   VxPriceField,
+  VxIconMdi,
+  VxSwitch,
 }

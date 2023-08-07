@@ -36,6 +36,8 @@ import VxTwoColumnContainer from './components/two-column-container/vx-two-colum
 import { VxPriceField } from './components/index.js'
 import { VxAccordion } from './components/index.js'
 import { VxAccordionItem } from './components/index.js'
+import { VxIconMdi } from './components/index.js'
+import VxSwitch from './components/switch/vx-switch.vue'
 
 export {
   VxAccordion,
@@ -76,4 +78,6 @@ export {
   VxTooltip,
   VxTwoColumnContainer,
   VxPriceField,
+  VxIconMdi,
+  VxSwitch,
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-10 sm:mt-4 shadow sm:rounded-md">
+  <div class="mt-10 sm:mt-4 shadow sm:rounded-md self-start">
     <div
       :class="[
         onlyHeader ? 'rounded-b-md' : '',

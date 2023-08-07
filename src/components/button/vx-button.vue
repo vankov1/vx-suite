@@ -8,6 +8,7 @@
       sizeClasses,
       disabledClasses,
       useCssVariables ? 'vx-btn--css-vars' : '',
+      hasMdiIcon ? 'whitespace-nowrap' : '',
     ]"
     :data-active="isActive"
     :disabled="isDisabled"
@@ -113,6 +114,18 @@ export default {
     },
   },
   computed: {
+    hasMdiIcon() {
+      // return this.$slots.default()
+
+      for (const vnode of this.$slots.default()) {
+        // Check if vnode is a Vue component and if it's the ChildComponent
+        if (vnode.type.name == 'vx-icon-mdi') {
+          return true
+        }
+      }
+
+      return false
+    },
     computedColor() {
       return this.colorNames[this.color]
     },
@@ -246,9 +259,9 @@ export default {
 
 <style scoped>
 .vx-btn {
-  --vx-btn-bg: v-bind(useCssVariables[ 'background-color']);
-  --vx-btn-color: v-bind(useCssVariables[ 'color']);
-  --vx-btn-border-color: v-bind(useCssVariables[ 'border-color']);
+  --vx-btn-bg: v-bind(useCssVariables[ 'background-color' ]);
+  --vx-btn-color: v-bind(useCssVariables[ 'color' ]);
+  --vx-btn-border-color: v-bind(useCssVariables[ 'border-color' ]);
 }
 .vx-btn--css-vars {
   background: var(--vx-btn-bg);
