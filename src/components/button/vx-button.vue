@@ -13,6 +13,7 @@
     :data-active="isActive"
     :disabled="isDisabled"
     @click="onClick"
+    v-bind="$attrs"
   >
     <span v-if="!loadingInProcess"><slot /></span>
     <span v-else>
@@ -58,7 +59,7 @@
   <!--  <div class="border border-purple-600 text-purple-600 bg-white hover:bg-purple-50"></div>-->
   <!--  <div class="text-gray-600 hover:text-gray-700 focus:ring-gray-500 bg-none hover:bg-none focus:ring-offset-none dark:text-gray-100"></div>-->
   <!--<div
-    class="vx-btn px-3 py-2 dark:!text-gray-200 dark:hover:text-gray-100 dark:focus:ring-gray-500 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-offset-gray-900 dark:focus:ring-offset-2 self-center inline-flex justify-center rounded-md border border-transparent text-sm font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 bg-gray-600 hover:bg-gray-700 focus:ring-gray-500 border border-gray-600 text-gray-600 bg-white hover:bg-gray-50 p-2 hover:!bg-gray-50 hover:!bg-indigo-50"></div>-->
+    class="vx-btn px-3 py-2 dark:!text-gray-200 dark:hover:text-gray-100 dark:focus:ring-gray-500 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-offset-gray-900 dark:focus:ring-offset-2 self-center inline-flex justify-center rounded-md border border-transparent text-sm font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 bg-gray-600 hover:bg-gray-700 focus:ring-gray-500 border border-gray-600 text-gray-600 bg-white hover:bg-gray-50 p-2 hover:!bg-gray-50 hover:!bg-indigo-50 px-9 py-3"></div>-->
 </template>
 
 <script>
@@ -147,6 +148,7 @@ export default {
         orange: 'orange',
         yellow: 'yellow',
         green: 'green',
+        white: 'white',
       }
 
       const colorClasses = Object.entries(colors).reduce(
@@ -169,10 +171,15 @@ export default {
         classes += ' text-white border-transparent'
       }
 
+      if (this.color === 'white') {
+        classes +=
+          ' text-gray-600 hover:text-gray-700 focus:ring-gray-500 bg-white hover:bg-none focus:ring-offset-none dark:text-gray-100'
+      }
+
       classes +=
         ' dark:!text-gray-200 dark:hover:text-gray-100 dark:focus:ring-gray-500 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-offset-gray-900 dark:focus:ring-offset-2'
 
-      return `${classes} self-center inline-flex justify-center rounded-md border text-sm font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 ${
+      return `${classes} self-center inline-flex justify-center border text-sm font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 ${
         colorClasses[this.color]
       }`
     },
@@ -181,6 +188,8 @@ export default {
 
       if (this.rounded) {
         classes += ' rounded-full'
+      } else {
+        classes += ' rounded-md'
       }
 
       if (this.block) {
@@ -206,6 +215,7 @@ export default {
         small: 'p-1.5',
         normal: 'p-2',
         large: 'p-3',
+        xlarge: 'px-6 py-4',
       }
 
       return sizes[this.size]

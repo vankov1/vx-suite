@@ -4,11 +4,15 @@
       <label
         :for="id"
         class="block text-sm font-medium text-gray-700 dark:text-gray-100 h-5"
+        :class="labelClass"
         v-if="label"
       >
         {{ label }}
       </label>
-      <div class="mt-1 flex rounded-md shadow-sm">
+      <div
+        class="mt-1 flex rounded-md shadow-sm"
+        :class="inputWrapperClass"
+      >
         <span
           class="inline-flex items-center rounded-l-md border border-r-0 border-gray-300 bg-gray-50 px-3 text-sm text-gray-500 dark:bg-gray-900 dark:text-gray-100 dark:border-gray-700"
         >
@@ -40,6 +44,7 @@
       <label
         :for="id"
         class="block text-sm font-medium text-gray-700 dark:text-gray-100 h-5"
+        :class="labelClass"
         v-if="label"
       >
         {{ label }}
@@ -104,6 +109,10 @@ export default {
     },
     modelValue: [String, Number],
     label: String,
+    labelClass: {
+      type: String,
+      default: '',
+    },
     pre: {
       type: String,
       default: '',
@@ -133,6 +142,10 @@ export default {
       default: 0,
     },
     inputClass: {
+      type: String,
+      default: '',
+    },
+    inputWrapperClass: {
       type: String,
       default: '',
     },

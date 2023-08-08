@@ -4,12 +4,14 @@
     v-model="internalValue"
   >
     <ListboxLabel
+      :class="labelClass"
       class="block text-sm font-medium text-gray-700 dark:text-gray-300"
       v-if="label"
     >
       {{ label }}
     </ListboxLabel>
     <ListboxLabel
+      :class="descriptionClass"
       class="text-sm text-gray-500 dark:text-gray-400"
       v-if="description"
     >
@@ -18,6 +20,7 @@
     <div class="relative mt-1">
       <ListboxButton
         class="min-h-[38px] relative w-full cursor-default rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 dark:focus:ring-gray-500 dark:focus:border-gray-700"
+        v-bind="$attrs"
       >
         <span
           class="block truncate"
@@ -38,9 +41,11 @@
               </vx-badge>
             </template>
             <template v-else>
-              <vx-badge :color="chipsColor">{{
-                internalValue ? internalValue[itemTitle] ?? internalValue : ''
-              }}</vx-badge>
+              <vx-badge :color="chipsColor">
+                {{
+                  internalValue ? internalValue[itemTitle] ?? internalValue : ''
+                }}
+              </vx-badge>
             </template>
           </template>
           <template v-else>
@@ -65,6 +70,7 @@
         </span>
         <span
           v-else
+          :class="placeholderClass"
           class="block truncate text-gray-400 dark:text-gray-500"
         >
           {{ placeholder }}
@@ -161,9 +167,17 @@ export default {
       type: String,
       default: null,
     },
+    labelClass: {
+      type: String,
+      default: '',
+    },
     description: {
       type: String,
       default: null,
+    },
+    descriptionClass: {
+      type: String,
+      default: '',
     },
     items: {
       type: [Array, Object],
@@ -192,6 +206,10 @@ export default {
     placeholder: {
       type: String,
       default: 'Select an option',
+    },
+    placeholderClass: {
+      type: String,
+      default: '',
     },
     returnValueKey: {
       type: String,
