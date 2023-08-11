@@ -105,13 +105,16 @@ export default {
     },
   },
   watch: {
-    loading: function (val) {
-      if (val) {
-        this.loadingInProcess = true
-        setTimeout(() => {
-          this.loadingInProcess = false
-        }, 250)
-      }
+    loading: {
+      handler(val) {
+        if (val) {
+          this.loadingInProcess = true
+          setTimeout(() => {
+            this.loadingInProcess = false
+          }, 500)
+        }
+      },
+      immediate: true,
     },
   },
   computed: {
@@ -269,9 +272,9 @@ export default {
 
 <style scoped>
 .vx-btn {
-  --vx-btn-bg: v-bind(useCssVariables[ 'background-color' ]);
-  --vx-btn-color: v-bind(useCssVariables[ 'color' ]);
-  --vx-btn-border-color: v-bind(useCssVariables[ 'border-color' ]);
+  --vx-btn-bg: v-bind(useCssVariables[ 'background-color']);
+  --vx-btn-color: v-bind(useCssVariables[ 'color']);
+  --vx-btn-border-color: v-bind(useCssVariables[ 'border-color']);
 }
 .vx-btn--css-vars {
   background: var(--vx-btn-bg);
