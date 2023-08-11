@@ -1,11 +1,13 @@
 <template>
-  <div class="mt-10 sm:mt-4 shadow sm:rounded-md self-start">
+  <div
+    class="mt-10 sm:mt-4 shadow sm:rounded-md self-start bg-white dark:bg-gray-800"
+  >
     <div
       :class="[
         onlyHeader ? 'rounded-b-md' : '',
         noHeaderDivider ? '' : 'border-b border-gray-200 dark:border-gray-700',
       ]"
-      class="bg-white px-4 py-5 sm:px-6 rounded-t-md dark:bg-gray-800"
+      class="px-4 py-5 sm:px-6 rounded-t-md"
       v-if="$slots.title"
     >
       <div
@@ -41,13 +43,13 @@
     </div>
     <div
       :class="[contentClasses, contentClass]"
-      class="bg-white px-4 py-5 sm:p-6 dark:bg-gray-800 dark:text-gray-100"
+      class="px-4 py-5 sm:p-6 dark:text-gray-100"
       v-if="!onlyHeader"
     >
       <slot></slot>
     </div>
     <div
-      class="bg-gray-50 px-4 py-3 text-right sm:px-6 flex justify-end rounded-b-md dark:text-gray-100 dark:bg-gray-800"
+      class="bg-gray-50 px-4 py-3 text-right sm:px-6 flex justify-end rounded-b-md dark:text-gray-100"
       v-if="$slots.actions"
     >
       <slot name="actions"></slot>

@@ -3,6 +3,7 @@
     <label
       :for="id"
       class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+      :class="labelClass"
       v-if="label"
     >
       {{ label }}
@@ -15,6 +16,7 @@
           error,
         'border-gray-300 text-gray-900 placeholder-gray-300 focus:border-primary-300 focus:shadow-outline-primary':
           !error,
+        [inputClass]: inputClass,
       }"
       :value="modelValue"
       @input="updateValue"
@@ -35,6 +37,10 @@ export default {
       type: String,
       default: '',
     },
+    labelClass: {
+      type: String,
+      default: '',
+    },
     placeholder: {
       type: String,
       default: '',
@@ -48,6 +54,10 @@ export default {
       default: false,
     },
     modelValue: [String, Number],
+    inputClass: {
+      type: String,
+      default: '',
+    },
   },
   emits: ['update:modelValue'],
   methods: {
