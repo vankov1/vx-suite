@@ -26,6 +26,7 @@
     "@heroicons/vue": "^2.0.18",
     "@mdi/font": "^7.2.96",
     "vue": "^3.3.4",
+    "vue3-easy-data-table": "^1.5.47",
     "vue3-popper": "^1.5.0"
   },
   "devDependencies": {
