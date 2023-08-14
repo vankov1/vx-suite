@@ -38,6 +38,7 @@ import { VxAccordion } from './components/index.js'
 import { VxAccordionItem } from './components/index.js'
 import { VxIconMdi } from './components/index.js'
 import VxSwitch from './components/switch/vx-switch.vue'
+import { VxInputLabel } from './subatomic/index.js'
 
 export {
   VxAccordion,
@@ -80,4 +81,5 @@ export {
   VxPriceField,
   VxIconMdi,
   VxSwitch,
+  VxInputLabel,
 }

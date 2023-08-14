@@ -1,25 +1,36 @@
 <template>
   <div :class="alertClasses">
     <div class="flex">
-      <div class="flex-shrink-0">
-        <InformationCircleIcon
-          v-if="type == 'info'"
-          class="h-5 w-5 text-blue-400"
-          aria-hidden="true"
-        />
-        <ExclamationCircleIcon
-          v-if="type == 'error'"
-          class="h-5 w-5 text-red-400"
-          aria-hidden="true"
-        />
-        <CheckCircleIcon
-          v-if="type == 'success'"
-          class="h-5 w-5 text-green-400"
-          aria-hidden="true"
-        />
+      <div class="flex-shrink-0 flex">
+        <div :class="iconWrapperClass">
+          <InformationCircleIcon
+            v-if="type == 'info'"
+            class="h-5 w-5 text-blue-400"
+            :class="iconClass"
+            aria-hidden="true"
+          />
+          <ExclamationCircleIcon
+            v-if="type == 'error'"
+            class="h-5 w-5 text-red-400"
+            :class="iconClass"
+            aria-hidden="true"
+          />
+          <CheckCircleIcon
+            v-if="type == 'success'"
+            class="h-5 w-5 text-green-400"
+            :class="iconClass"
+            aria-hidden="true"
+          />
+          <ExclamationTriangleIcon
+            v-if="type == 'warning'"
+            class="h-5 w-5 text-yellow-400"
+            :class="iconClass"
+            aria-hidden="true"
+          />
+        </div>
       </div>
       <div class="ml-3 flex-1 md:flex md:justify-between">
-        <p :class="messageClasses"><slot></slot></p>
+        <p :class="[messageClasses, contentClass]"><slot></slot></p>
         <p
           class="mt-3 text-sm md:mt-0 md:ml-6"
           v-if="buttonText"
@@ -42,17 +53,35 @@ import {
   CheckCircleIcon,
   ExclamationCircleIcon,
   InformationCircleIcon,
+  ExclamationTriangleIcon,
 } from '@heroicons/vue/20/solid'
 
 export default {
   name: 'vx-alert',
-  components: { InformationCircleIcon, ExclamationCircleIcon, CheckCircleIcon },
+  components: {
+    InformationCircleIcon,
+    ExclamationCircleIcon,
+    CheckCircleIcon,
+    ExclamationTriangleIcon,
+  },
   props: {
     type: {
       type: String,
       default: 'info',
     },
     buttonText: {
+      type: String,
+      default: '',
+    },
+    contentClass: {
+      type: String,
+      default: '',
+    },
+    iconClass: {
+      type: String,
+      default: '',
+    },
+    iconWrapperClass: {
       type: String,
       default: '',
     },

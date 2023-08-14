@@ -26,7 +26,7 @@
         as="template"
         v-for="item in localItems"
         :key="item"
-        :value="item"
+        :value="returnObject ? item : item[itemValue]"
         :disabled="item.disabled"
         v-slot="{ checked, active, disabled }"
       >
@@ -51,7 +51,7 @@
                   name="title"
                   :item="item"
                 >
-                  {{ item.title }}
+                  {{ item[itemTitle] }}
                 </slot>
               </RadioGroupLabel>
               <RadioGroupDescription
@@ -138,6 +138,11 @@ export default {
       type: [String, Object, Number],
       required: false,
     },
+    itemTitle: {
+      type: String,
+      required: false,
+      default: 'title',
+    },
     itemValue: {
       type: String,
       required: false,
@@ -167,15 +172,8 @@ export default {
   data() {
     return {
       item: null,
+      localItems: [],
     }
-  },
-  watch: {
-    item: function (val) {
-      if (!val) {
-        return
-      }
-      this.$emit('input', this.returnObject ? val : val[this.itemValue])
-    },
   },
   created() {
     if (this.type === 'yes-no') {

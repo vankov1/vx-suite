@@ -60,6 +60,7 @@
   <!--  <div class="text-gray-600 hover:text-gray-700 focus:ring-gray-500 bg-none hover:bg-none focus:ring-offset-none dark:text-gray-100"></div>-->
   <!--<div
     class="vx-btn px-3 py-2 dark:!text-gray-200 dark:hover:text-gray-100 dark:focus:ring-gray-500 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-offset-gray-900 dark:focus:ring-offset-2 self-center inline-flex justify-center rounded-md border border-transparent text-sm font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 bg-gray-600 hover:bg-gray-700 focus:ring-gray-500 border border-gray-600 text-gray-600 bg-white hover:bg-gray-50 p-2 hover:!bg-gray-50 hover:!bg-indigo-50 px-9 py-3"></div>-->
+  <!--<div class="bg-primary-500 text-primary-400 bg-primary-400 bg-primary-600 bg-primary-700 focus:ring-primary-500 border-primary-600 text-primary-600 bg-white hover:bg-primary-50"></div>-->
 </template>
 
 <script>
@@ -135,7 +136,7 @@ export default {
     },
     colorClasses() {
       const colors = {
-        primary: 'indigo',
+        primary: 'primary',
         secondary: 'gray',
         gray: 'gray',
         slate: 'slate',
@@ -272,9 +273,9 @@ export default {
 
 <style scoped>
 .vx-btn {
-  --vx-btn-bg: v-bind(useCssVariables[ 'background-color']);
-  --vx-btn-color: v-bind(useCssVariables[ 'color']);
-  --vx-btn-border-color: v-bind(useCssVariables[ 'border-color']);
+  --vx-btn-bg: v-bind(useCssVariables[ 'background-color' ]);
+  --vx-btn-color: v-bind(useCssVariables[ 'color' ]);
+  --vx-btn-border-color: v-bind(useCssVariables[ 'border-color' ]);
 }
 .vx-btn--css-vars {
   background: var(--vx-btn-bg);

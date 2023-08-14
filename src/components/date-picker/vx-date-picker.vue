@@ -77,8 +77,8 @@ export default {
 
 <style>
 .vx-booking-calendar {
-  --primary-color: v-bind(colorScheme [ 'primary']);
-  --secondary-color: v-bind(colorScheme [ 'secondary']);
+  --primary-color: v-bind(colorScheme [ 'primary' ]);
+  --secondary-color: v-bind(colorScheme [ 'secondary' ]);
 }
 
 .time-wrapper {
@@ -88,7 +88,7 @@ export default {
 
 .dp__main {
   display: flex;
-  justify-content: center;
+  //justify-content: center;
 }
 
 .time-button {

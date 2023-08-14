@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-2 bg-white dark:bg-gray-800">
+  <div class="mt-2 dark:bg-gray-800">
     <template v-if="pre">
       <label
         :for="id"
@@ -49,7 +49,10 @@
       >
         {{ label }}
       </label>
-      <div class="relative">
+      <div class="relative flex">
+        <div>
+          <slot name="prepend"></slot>
+        </div>
         <input
           :id="id"
           :ref="id"
