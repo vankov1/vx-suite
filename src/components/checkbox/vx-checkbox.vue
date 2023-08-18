@@ -10,13 +10,15 @@
         class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 dark:bg-gray-800"
       />
     </div>
-    <div class="ml-3 text-sm">
+    <div class="ml-3 text-sm cursor-pointer">
       <label
         :for="id"
-        class="font-medium text-gray-700 dark:text-gray-100"
-        >{{ label }}</label
+        class="font-medium text-gray-700 dark:text-gray-100 cursor-pointer"
+        ><slot name="label">{{ label }}</slot></label
       >
-      <p class="text-gray-500">{{ description }}</p>
+      <p class="text-gray-500">
+        <slot name="description">{{ description }}</slot>
+      </p>
     </div>
   </div>
 </template>

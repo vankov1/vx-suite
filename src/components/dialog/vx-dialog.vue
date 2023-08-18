@@ -37,7 +37,7 @@
           >
             <DialogPanel
               class="w-full transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all dark:text-gray-100 dark:bg-gray-800"
-              :class="width"
+              :class="[width, { '!overflow-visible': allowOverflow }]"
             >
               <DialogTitle
                 v-if="$slots.title"
@@ -113,6 +113,10 @@ export default {
     width: {
       type: String,
       default: 'max-w-md',
+    },
+    allowOverflow: {
+      type: Boolean,
+      default: false,
     },
   },
   watch: {

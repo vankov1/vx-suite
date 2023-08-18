@@ -97,13 +97,12 @@ export default {
       default: '',
     },
     modelValue: {
-      type: [Boolean, Number],
+      type: [Boolean, Number, String],
       default: false,
     },
   },
   watch: {
     enabled: {
-      immediate: true,
       handler(value) {
         this.$emit('update:modelValue', value)
       },
@@ -115,7 +114,32 @@ export default {
     }
   },
   created() {
-    this.checked = this.modelValue
+    if (typeof this.modelValue === 'boolean') {
+      this.enabled = this.modelValue
+      return
+    }
+
+    if (
+      typeof this.modelValue === 'string' &&
+      (this.modelValue === 'true' || this.modelValue === 'false')
+    ) {
+      console.log('stringx')
+      this.enabled = this.modelValue === 'true'
+      return
+    }
+
+    if (typeof this.modelValue === 'string') {
+      console.log('string')
+
+      this.enabled = parseInt(this.modelValue) === 1
+      return
+    }
+
+    if (typeof this.modelValue === 'number') {
+      console.log('number')
+      this.enabled = this.modelValue === 1
+      return
+    }
   },
 }
 </script>

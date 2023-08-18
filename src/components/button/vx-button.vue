@@ -104,6 +104,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    small: {
+      type: Boolean,
+      default: false,
+    },
   },
   watch: {
     loading: {
@@ -222,6 +226,14 @@ export default {
         xlarge: 'px-6 py-4',
       }
 
+      if (this.icon) {
+        return 'w-8 h-8'
+      }
+
+      if (this.small) {
+        return sizes['small']
+      }
+
       return sizes[this.size]
     },
     disabledClasses() {
@@ -266,6 +278,8 @@ export default {
       if (this.inertiaHref) {
         this.$inertia.get(this.inertiaHref)
       }
+
+      window.open(this.href, this.target)
     },
   },
 }

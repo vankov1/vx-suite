@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-white py-2 dark:bg-gray-800 shadow dark:text-gray-100 px-2 sm:px-8"
+    class="bg-white py-2 dark:bg-gray-800 shadow dark:text-gray-100 px-2 sm:px-8 print:hidden"
   >
     <div class="container w-full max-w-[1212px] mx-auto">
       <nav class="py-1">

@@ -31,7 +31,7 @@
       ref="fileInput"
       type="file"
       name="img"
-      multiple
+      :multiple="multiple"
       @change="onFileChange"
       class="hidden"
     />
@@ -51,8 +51,9 @@
         block
         @click="save()"
         :loading="loading"
+        v-if="!selectOnly"
       >
-        Upload
+        Upload {{ selectOnly }}
       </vx-button>
     </div>
   </div>
@@ -70,7 +71,7 @@ export default {
   props: {
     model: {
       type: Object,
-      required: true,
+      required: false,
     },
     currentFiles: {
       type: Array,
@@ -78,7 +79,15 @@ export default {
     },
     submitUrl: {
       type: String,
-      required: true,
+      required: false,
+    },
+    selectOnly: {
+      type: Boolean,
+      default: false,
+    },
+    multiple: {
+      type: Boolean,
+      default: true,
     },
   },
   data() {
@@ -102,12 +111,20 @@ export default {
     onFileChange(e) {
       const { maxSize } = this
       let uploadedFiles = this.$refs.fileInput.files
-      for (let i = 0; i < uploadedFiles.length; i++) {
+      let limit = this.multiple ? uploadedFiles.length : 1
+
+      if (limit == 1) {
+        this.files = []
+        this.images = []
+      }
+
+      for (let i = 0; i < limit; i++) {
         let size = uploadedFiles[i].size / maxSize / maxSize
         if (size > 1) {
           alert('file is too big')
           return
         }
+
         this.files.push(uploadedFiles[i])
       }
       const images = e.target.files
@@ -121,6 +138,8 @@ export default {
       if (this.type == 'create') {
         this.$emit('input', this.files)
       }
+
+      this.$emit('files-selected', this.files)
     },
     deleteImage(imageIndex) {
       if (imageIndex > -1) {

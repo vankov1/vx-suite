@@ -46,6 +46,8 @@ import { VxAccordion } from './accordion/index.js'
 import { VxAccordionItem } from './accordion-item/index.js'
 import { VxIconMdi } from './icon-mdi/index.js'
 import { VxSwitch } from './switch/index.js'
+import { VxSwatchWithPicker } from './swatch-with-picker/index.js'
+import { VxPagination } from './pagination/index.js'
 
 export {
   VxAccordion,
@@ -88,4 +90,6 @@ export {
   VxPriceField,
   VxIconMdi,
   VxSwitch,
+  VxSwatchWithPicker,
+  VxPagination,
 }

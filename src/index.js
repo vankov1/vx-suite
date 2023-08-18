@@ -39,7 +39,8 @@ import { VxAccordionItem } from './components/index.js'
 import { VxIconMdi } from './components/index.js'
 import VxSwitch from './components/switch/vx-switch.vue'
 import { VxInputLabel } from './subatomic/index.js'
-
+import { VxSwatchWithPicker } from './components/index.js'
+import { VxPagination } from './components/index.js'
 export {
   VxAccordion,
   VxAccordionItem,
@@ -82,4 +83,6 @@ export {
   VxIconMdi,
   VxSwitch,
   VxInputLabel,
+  VxSwatchWithPicker,
+  VxPagination,
 }
