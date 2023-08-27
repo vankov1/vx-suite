@@ -1,11 +1,26 @@
 <template>
-  <div>
-    <input
-      type="color"
-      id="head"
-      name="head"
-      value="#e66465"
-    />
+  <div class="flex items-center content-center gap-2">
+    <div
+      class="rounded-full w-8 h-8 border-2 border-gray-100"
+      :style="{ backgroundColor: color }"
+      @click="$refs['colorPicker'].focus()"
+    >
+      <input
+        ref="colorPicker"
+        class="rounded-full w-8 h-8 border-2 border-gray-200 opacity-0"
+        type="color"
+        id="head"
+        name="head"
+        :value="color"
+        @change="colorUpdated($event.target.value)"
+      />
+    </div>
+    <label
+      class="flex text-sm text-gray-700"
+      :for="label"
+    >
+      {{ label }}
+    </label>
   </div>
 </template>
 
@@ -29,8 +44,7 @@ export default {
   },
   methods: {
     colorUpdated(v) {
-      console.log(v)
-      this.$emit('color-updated', v.hex)
+      this.$emit('color-updated', v)
     },
   },
 }

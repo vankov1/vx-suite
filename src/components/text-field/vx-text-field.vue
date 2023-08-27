@@ -20,7 +20,7 @@
         </span>
         <input
           :id="id"
-          type="text"
+          :type="inputType"
           :name="name"
           :value="modelValue"
           @change="updateValue"
@@ -65,6 +65,7 @@
           @change="updateValue"
           @keyup="keyUp"
           v-bind="{ ...$props, ...$attrs }"
+          :type="inputType"
         />
         <div
           v-if="hint"
@@ -151,6 +152,10 @@ export default {
     inputWrapperClass: {
       type: String,
       default: '',
+    },
+    inputType: {
+      type: String,
+      default: 'text',
     },
   },
   emits: ['update:modelValue'],

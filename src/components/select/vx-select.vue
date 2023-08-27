@@ -234,6 +234,7 @@ export default {
         }
 
         this.$emit('update:modelValue', value)
+        this.$emit('change', value)
       },
     },
     selectedObject() {

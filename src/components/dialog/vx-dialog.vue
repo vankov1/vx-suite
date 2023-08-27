@@ -42,9 +42,11 @@
               <DialogTitle
                 v-if="$slots.title"
                 as="h3"
-                class="text-lg font-medium leading-6 text-gray-900 mb-4 dark:text-gray-100"
+                class="text-lg font-medium leading-6 text-gray-900 mb-4 dark:text-gray-100 flex"
               >
                 <slot name="title"></slot>
+                <div class="grow"></div>
+                <slot name="header-action"></slot>
               </DialogTitle>
               <DialogDescription>
                 <div class="text-sm text-gray-500">
@@ -56,7 +58,7 @@
                 v-if="$slots.actions"
                 class="mt-4"
               >
-                <div class="w-full flex justify-end">
+                <div class="w-full flex justify-end gap-4">
                   <slot
                     name="actions"
                     :close="closeModal"
@@ -127,7 +129,7 @@ export default {
   mounted() {
     this.setIsOpen(this.open)
   },
-  emits: ['modal-opened', 'modal-closed'],
+  emits: ['modal-opened', 'modal-closed', 'update:open'],
   data() {
     return {
       isOpen: false,
@@ -136,7 +138,8 @@ export default {
   methods: {
     setIsOpen(value) {
       this.isOpen = value
-      console.log('isOpen', this.isOpen)
+
+      this.$emit('update:open', value)
 
       if (value === false) {
         this.$emit('modal-closed')
