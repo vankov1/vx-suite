@@ -19,7 +19,7 @@
         [inputClass]: inputClass,
       }"
       :value="modelValue"
-      @input="updateValue"
+      @change="updateValue"
       :placeholder="placeholder"
     ></textarea>
   </div>

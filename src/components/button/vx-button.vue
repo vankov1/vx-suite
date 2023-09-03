@@ -1,6 +1,6 @@
 <template>
   <button
-    class="vx-btn"
+    class="vx-btn transition-all duration-200 ease-in-out"
     :class="[
       colorClasses,
       iconClasses,
@@ -15,8 +15,8 @@
     @click="onClick"
     v-bind="$attrs"
   >
-    <span v-if="!loadingInProcess"><slot /></span>
-    <span v-else>
+    <template v-if="!loadingInProcess"><slot /></template>
+    <template v-else>
       <svg
         class="animate-spin h-5 w-5 text-white"
         xmlns="http://www.w3.org/2000/svg"
@@ -37,7 +37,7 @@
           d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647zM20 12a8 8 0 01-8 8v4c4.627 0 10-5.373 10-12h-4zm-2-5.291A7.962 7.962 0 0120 12h4c0-3.042-1.135-5.824-3-7.938l-3 2.647z"
         ></path>
       </svg>
-    </span>
+    </template>
   </button>
   <!--  <button type="button" class="">-->
   <!--    <PlusIconMini class="h-5 w-5" aria-hidden="true" />-->
@@ -140,36 +140,26 @@ export default {
     },
     colorClasses() {
       const colors = {
-        primary: 'primary',
-        secondary: 'gray',
-        gray: 'gray',
-        slate: 'slate',
-        danger: 'red',
-        success: 'green',
-        warning: 'yellow',
-        info: 'blue',
-        blue: 'blue',
-        indigo: 'indigo',
-        purple: 'purple',
-        pink: 'pink',
-        red: 'red',
-        orange: 'orange',
-        yellow: 'yellow',
-        green: 'green',
-        white: 'white',
+        blue: 'bg-blue-600 hover:bg-blue-700 focus:ring-blue-500',
+        danger: 'bg-red-600 hover:bg-red-700 focus:ring-red-500',
+        gray: 'bg-gray-600 hover:bg-gray-700 focus:ring-gray-500',
+        green: 'bg-green-600 hover:bg-green-700 focus:ring-green-500',
+        indigo: 'bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500',
+        info: 'bg-blue-600 hover:bg-blue-700 focus:ring-blue-500',
+        orange: 'bg-orange-600 hover:bg-orange-700 focus:ring-orange-500',
+        pink: 'bg-pink-600 hover:bg-pink-700 focus:ring-pink-500',
+        primary: 'bg-primary-600 hover:bg-primary-700 focus:ring-primary-500',
+        purple: 'bg-purple-600 hover:bg-purple-700 focus:ring-purple-500',
+        red: 'bg-red-600 hover:bg-[#F65965] hover:text-white focus:!ring-red-500',
+        secondary: 'bg-gray-600 hover:bg-gray-700 focus:ring-gray-500',
+        slate: 'bg-slate-600 hover:bg-slate-700 focus:ring-slate-500',
+        success: 'bg-green-600 hover:bg-green-700 focus:ring-green-500',
+        warning: 'bg-yellow-600 hover:bg-yellow-700 focus:ring-yellow-500',
+        white: 'bg-white hover:bg-gray-50 focus:ring-white',
+        yellow: 'bg-yellow-600 hover:bg-yellow-700 focus:ring-yellow-500',
       }
 
-      const colorClasses = Object.entries(colors).reduce(
-        (acc, [key, value]) => {
-          acc[
-            key
-          ] = `bg-${value}-600 hover:bg-${value}-700 focus:ring-${value}-500`
-          return acc
-        },
-        {}
-      )
-
-      let classes = ''
+      let classes = 'focus:ring-2 ' + colors[this.color]
 
       if (!this.icon && !this.rounded && this.size === 'normal') {
         classes += 'px-3 py-2'
@@ -187,9 +177,7 @@ export default {
       classes +=
         ' dark:!text-gray-200 dark:hover:text-gray-100 dark:focus:ring-gray-500 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-offset-gray-900 dark:focus:ring-offset-2'
 
-      return `${classes} self-center inline-flex justify-center border text-sm font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 ${
-        colorClasses[this.color]
-      }`
+      return `${classes} self-center inline-flex justify-center border text-sm font-medium shadow-sm focus:outline-none focus:ring-offset-2`
     },
     variantClasses() {
       let classes = ''
@@ -205,7 +193,39 @@ export default {
       }
 
       if (this.outlined) {
-        classes += ` border border-${this.computedColor}-600 text-${this.computedColor}-600 bg-white hover:!bg-${this.computedColor}-50`
+        const colors = {
+          red: 'border border-red-600 text-red-600 bg-transparent hover:bg-red-50',
+          orange:
+            'border border-orange-600 text-orange-600 bg-transparent hover:bg-orange-50',
+          yellow:
+            'border border-yellow-600 text-yellow-600 bg-transparent hover:bg-yellow-50',
+          green:
+            'border border-green-600 text-green-600 bg-transparent hover:bg-green-50',
+          blue: 'border border-blue-600 text-blue-600 bg-transparent hover:bg-blue-50',
+          indigo:
+            'border border-indigo-600 text-indigo-600 bg-transparent hover:bg-indigo-50',
+          purple:
+            'border border-purple-600 text-purple-600 bg-transparent hover:bg-purple-50',
+          pink: 'border border-pink-600 text-pink-600 bg-transparent hover:bg-pink-50',
+          slate:
+            'border border-slate-600 text-slate-600 bg-transparent hover:bg-slate-50',
+          gray: 'border border-gray-600 text-gray-600 bg-transparent hover:bg-gray-50',
+          white:
+            'border border-gray-600 text-gray-600 bg-transparent hover:bg-gray-50',
+          primary:
+            'border border-primary-600 text-primary-600 bg-transparent hover:bg-primary-50',
+          secondary:
+            'border border-gray-600 text-gray-600 bg-transparent hover:bg-gray-50',
+          success:
+            'border border-green-600 text-green-600 bg-transparent hover:bg-green-50',
+          danger:
+            'border border-red-600 text-red-600 bg-transparent hover:bg-red-50',
+          warning:
+            'border border-yellow-600 text-yellow-600 bg-transparent hover:bg-yellow-50',
+          info: 'border border-blue-600 text-blue-600 bg-transparent hover:bg-blue-50',
+        }
+
+        classes += ` ${colors[this.color]}`
       }
 
       return classes
