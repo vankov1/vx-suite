@@ -7,10 +7,10 @@
         @input="emitUpdate($event.target.checked)"
         aria-describedby="comments-description"
         type="checkbox"
-        class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 dark:bg-gray-800"
+        class="h-4 w-4 border rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 dark:bg-gray-800"
       />
     </div>
-    <div class="ml-3 text-sm cursor-pointer">
+    <div class="ml-3 text-sm cursor-pointer x">
       <label
         :for="id"
         class="font-medium text-gray-700 dark:text-gray-100 cursor-pointer"

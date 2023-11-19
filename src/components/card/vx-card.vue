@@ -1,6 +1,6 @@
 <template>
   <div
-    class="mt-10 sm:mt-4 shadow sm:rounded-md self-start bg-white dark:bg-gray-800"
+    class="sm:mt-4 shadow sm:rounded-md self-start bg-white dark:bg-gray-800"
   >
     <div
       :class="[
@@ -11,9 +11,12 @@
       v-if="$slots.title"
     >
       <div
-        class="-ml-4 -mt-2 flex flex-wrap items-center justify-between sm:flex-nowrap"
+        class="flex flex-wrap items-center justify-between sm:flex-nowrap"
+        :class="{
+          '-ml-4 -mt-2 ': !onlyHeader,
+        }"
       >
-        <div class="ml-4 mt-2">
+        <div class="">
           <h3
             class="text-lg font-medium leading-6 text-gray-900 dark:text-gray-100"
           >
@@ -27,7 +30,7 @@
           </p>
         </div>
         <div
-          class="ml-4 mt-2 flex-shrink-0"
+          class="ml-4 flex-shrink-0"
           v-if="$slots.headerAction"
         >
           <slot name="headerAction">
