@@ -8,7 +8,7 @@
         as="span"
         class="text-sm font-medium text-gray-900 dark:text-white"
         passive
-        >{{ label }}</SwitchLabel
+        ><slot>{{ label }}</slot></SwitchLabel
       >
       <SwitchDescription
         as="span"

@@ -1,7 +1,12 @@
 <template>
   <div>
     <template v-if="images.length > 0">
-      <div class="grid grid-cols-2 gap-4 mb-2">
+      <div
+        class="grid mb-2"
+        :class="[
+          'grid-cols-1' + (images.length > 4 ? ' grid-rows-2' : ' grid-rows-1'),
+        ]"
+      >
         <div
           class="col-4 d-flex flex-column relative"
           v-for="(img, index) in images"
@@ -36,9 +41,9 @@
       class="hidden"
     />
 
-    <div class="grid grid-cols-3 gap-4">
+    <div :class="[selectOnly ? 'w-full' : 'grid grid-cols-3 gap-4']">
       <vx-button
-        class="col-span-2"
+        :class="[selectOnly ? 'w-full' : 'col-span-2']"
         color="gray"
         @click="$refs.fileInput.click()"
         block
@@ -67,7 +72,6 @@ import _ from 'lodash'
 export default {
   name: 'vx-file-upload',
   components: { VxButton, VxIcon },
-  emits: ['upload-completed'],
   props: {
     model: {
       type: Object,
@@ -75,7 +79,7 @@ export default {
     },
     currentFiles: {
       type: Array,
-      default: null,
+      default: [],
     },
     submitUrl: {
       type: String,
@@ -90,6 +94,7 @@ export default {
       default: true,
     },
   },
+  emits: ['upload-completed', 'input', 'files-selected', 'delete'],
   data() {
     return {
       loading: false,
@@ -100,11 +105,14 @@ export default {
   },
   mounted() {
     if (this.currentFiles && this.currentFiles.length > 0) {
+      // remove item from array if its value is false
+
+      this.images = this.currentFiles.filter((item) => item)
+
       // this.$refs.fileInput.files = this.currentFiles
-      this.images = this.currentFiles.map((file) => {
-        return file.full_url
-      })
-      this.images = this.currentFiles
+      // this.images = this.currentFiles.map((file) => {
+      //   return file.full_url
+      // })
     }
   },
   methods: {
@@ -147,6 +155,8 @@ export default {
         this.images.splice(imageIndex, 1)
         this.$emit('input', this.files)
       }
+
+      this.$emit('delete', [])
     },
     save() {
       this.loading = true

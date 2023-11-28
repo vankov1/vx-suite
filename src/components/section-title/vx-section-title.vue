@@ -5,7 +5,9 @@
       class="mb-2"
     />
 
-    <h2 class="text-xl font-bold text-gray-700 dark:text-gray-100">
+    <h2
+      class="text-xl font-bold text-gray-700 dark:text-gray-100 flex items-center"
+    >
       <slot />
     </h2>
     <p

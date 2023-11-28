@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="relative flex rounded-md shadow-sm justify-between w-full my-6"
+    class="relative flex rounded-md shadow-sm my-6 bg-white py-1 px-2 justify-center gap-2"
     aria-label="Pagination"
   >
     <template v-for="page in paginatedItem.links">
@@ -13,6 +13,7 @@
             'text-gray-700': page.active,
             'hover:bg-indigo-800': !page.active,
           }"
+          class="relative inline-flex items-center px-4 py-2 -ml-px text-sm font-medium hover:bg-gray-50"
         >
           {{ page.label }}
         </vx-button>

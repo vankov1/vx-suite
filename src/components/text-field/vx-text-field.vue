@@ -158,7 +158,7 @@ export default {
       default: 'text',
     },
   },
-  emits: ['update:modelValue'],
+  emits: ['update:modelValue', 'change'],
   methods: {
     updateValue(e) {
       this.$emit('update:modelValue', e.target.value)
@@ -173,6 +173,8 @@ export default {
           document.getElementById(this.nextFieldId)?.focus()
         })
       }
+
+      this.$emit('change', e)
     },
   },
 }
