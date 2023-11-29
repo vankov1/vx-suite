@@ -52,7 +52,6 @@
 
 <script>
 import { defineComponent } from 'vue'
-import { VxTextField } from '../../index.js'
 import VxIconWithTooltip from '../icon-with-tooltip/vx-icon-with-tooltip.vue'
 
 export default defineComponent({

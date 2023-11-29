@@ -1,20 +1,25 @@
-// plugins/vuetify.js
-import 'vuetify/styles'
-import './vuetify.scss'
+// import '../../src/settings.scss'
+// import 'vuetify/styles' // This imports everything
 import { createVuetify } from 'vuetify'
-import {VBtn, VTextField} from "vuetify/components";
+import { VBtn, VTextField, VCombobox } from 'vuetify/components'
 
 const vuetify = createVuetify({
   aliases: {
     VPrimaryButton: VBtn,
     VSecondaryButton: VBtn,
     VxInputField: VTextField,
+    VCombobox: VCombobox,
+    VBtn: VBtn,
   },
   defaults: {
     VBtn: {
       color: '#FFDF5A',
       flat: true,
       rounded: true,
+    },
+    VCombobox: {
+      variant: 'outlined',
+      density: 'compact',
     },
     VSelect: {
       variant: 'outlined',
@@ -36,7 +41,7 @@ const vuetify = createVuetify({
     VxInputField: {
       variant: 'outlined',
       density: 'compact',
-    }
+    },
   },
 })
 export default vuetify

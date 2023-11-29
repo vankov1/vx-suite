@@ -25,7 +25,7 @@
           :value="modelValue"
           @change="updateValue"
           @keyup="keyUp"
-          class="border-solid border-l-0 block w-full flex-1 rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm dark:bg-gray-900 dark:text-gray-100 dark:border-gray-700"
+          class="border border-solid border-l-0 block w-full flex-1 rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm dark:bg-gray-900 dark:text-gray-100 dark:border-gray-700"
           :class="inputClass"
           :placeholder="placeholder"
         />

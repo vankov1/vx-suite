@@ -1,0 +1,13 @@
+:root {
+  --v-theme-overlay-multiplier: 0.3 !important;
+}
+
+.v-field__input input {
+  border: 0;
+}
+
+.v-field__input input:focus {
+  outline: 0;
+  border: 0;
+  box-shadow: none;
+}

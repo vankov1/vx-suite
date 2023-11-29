@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.3.3",
   "type": "module",
+  "types": "global-components.d.ts",
   "description": "VxSuite of components for Vue3",
   "scripts": {
     "dev": "vite",
@@ -38,6 +39,10 @@
     "vite-plugin-vuetify": "^1.0.2",
     "vue-docgen-cli": "^4.67.0",
     "vue-docgen-web-types": "^0.1.8",
+    "vuetify": "^3.4.0"
+  },
+  "peerDependencies": {
+    "vue": "^3.3.4",
     "vuetify": "^3.4.0"
   }
 }
