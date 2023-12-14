@@ -3,7 +3,7 @@
     <div class="flex h-5 items-center">
       <input
         :id="id"
-        :checked="modelValue"
+        :checked="booleanModelValue"
         @input="emitUpdate($event.target.checked)"
         aria-describedby="comments-description"
         type="checkbox"
@@ -40,15 +40,34 @@ export default {
       default: '',
     },
     modelValue: {
-      type: Boolean,
+      type: [String, Number, Boolean],
       required: true,
     },
   },
   emits: ['update:modelValue'],
+  watch: {
+    modelValue: {
+      immediate: true,
+      handler(value) {
+        if (typeof value === 'string') {
+          this.booleanModelValue = value === 'true' || value === '1'
+        } else if (typeof value === 'number') {
+          this.booleanModelValue = value === 1
+        } else {
+          this.booleanModelValue = !!value
+        }
+      },
+    },
+  },
   methods: {
     emitUpdate(value) {
       this.$emit('update:modelValue', value)
     },
+  },
+  data() {
+    return {
+      booleanModelValue: false,
+    }
   },
 }
 </script>

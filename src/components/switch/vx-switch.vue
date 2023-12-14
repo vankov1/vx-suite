@@ -8,13 +8,15 @@
         as="span"
         class="text-sm font-medium text-gray-900 dark:text-white"
         passive
-        ><slot>{{ label }}</slot></SwitchLabel
       >
+        <slot>{{ label }}</slot>
+      </SwitchLabel>
       <SwitchDescription
         as="span"
         class="text-sm text-gray-500"
-        >{{ description }}</SwitchDescription
       >
+        {{ description }}
+      </SwitchDescription>
     </span>
     <Switch
       v-model="enabled"
@@ -102,6 +104,18 @@ export default {
     },
   },
   watch: {
+    modelValue: {
+      immediate: true,
+      handler(value) {
+        if (typeof value === 'string') {
+          this.enabled = value === 'true' || value === '1'
+        } else if (typeof value === 'number') {
+          this.enabled = value === 1
+        } else {
+          this.enabled = !!value
+        }
+      },
+    },
     enabled: {
       handler(value) {
         this.$emit('update:modelValue', value)
@@ -111,34 +125,6 @@ export default {
   data() {
     return {
       enabled: false,
-    }
-  },
-  created() {
-    if (typeof this.modelValue === 'boolean') {
-      this.enabled = this.modelValue
-      return
-    }
-
-    if (
-      typeof this.modelValue === 'string' &&
-      (this.modelValue === 'true' || this.modelValue === 'false')
-    ) {
-      console.log('stringx')
-      this.enabled = this.modelValue === 'true'
-      return
-    }
-
-    if (typeof this.modelValue === 'string') {
-      console.log('string')
-
-      this.enabled = parseInt(this.modelValue) === 1
-      return
-    }
-
-    if (typeof this.modelValue === 'number') {
-      console.log('number')
-      this.enabled = this.modelValue === 1
-      return
     }
   },
 }

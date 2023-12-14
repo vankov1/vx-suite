@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-2 dark:bg-gray-800">
+  <div class="dark:bg-gray-800">
     <div
       class="block text-sm font-medium text-gray-700 dark:text-gray-100 h-5"
       v-html="label"

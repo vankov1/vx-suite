@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-2 dark:bg-gray-800">
+  <div class="dark:bg-gray-800">
     <template v-if="pre">
       <label
         :for="id"

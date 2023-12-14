@@ -17,7 +17,10 @@
     >
       {{ description }}
     </ListboxLabel>
-    <div class="relative mt-1">
+    <div
+      class="relative"
+      :class="label || description ? 'mt-1' : ''"
+    >
       <ListboxButton
         class="min-h-[38px] relative w-full cursor-default rounded-md border border-gray-300 bg-white py-2 pl-3 pr-10 text-left shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 dark:focus:ring-gray-500 dark:focus:border-gray-700"
         v-bind="$attrs"
